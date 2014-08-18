@@ -1,0 +1,73 @@
+@import 'func.scss';
+html,body{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: #a4ffa5;
+	//overflow-x: hidden;
+
+	section{
+		position: relative;
+		margin: 150px auto 0px;
+		min-height: 700px;
+		width: 100%;
+		//max-width: 1200px;
+		background-color: white;
+		//border-radius: 5px;
+
+		header{
+			position: absolute;
+			overflow: hidden;
+			top: 0px;
+			left: 50%;
+			margin: -110px 0 0 -110px;
+			width: 200px;
+			height: 200px;
+			border: 10px solid white;
+			border-radius: 50%;
+
+			img{
+				width: 200px;
+				height: 200px;
+			}
+		}
+		article{
+			position: relative;
+			//top: -220px;
+			margin: 0;
+			padding: 50px 10px;
+
+			figure{
+				margin: 0px;
+				figcaption{
+					font-size: 2em;
+					line-height: 2.5em;
+				}
+				ul{
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					@include fixclear();
+
+					li{
+						float: left;
+						overflow: hidden;
+						padding: 10px;
+						width: 20%;
+						@include CSS3(box-sizing, border-box);
+
+						img{
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+	footer{
+		text-align: center;
+		font-size: 0.9em;
+		line-height: 3em;
+	}
+}

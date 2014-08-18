@@ -1,0 +1,71 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #a4ffa5;
+}
+body section {
+  position: relative;
+  margin: 150px auto 0px;
+  min-height: 700px;
+  width: 100%;
+  background-color: white;
+}
+body section header {
+  position: absolute;
+  overflow: hidden;
+  top: 0px;
+  left: 50%;
+  margin: -110px 0 0 -110px;
+  width: 200px;
+  height: 200px;
+  border: 10px solid white;
+  border-radius: 50%;
+}
+body section header img {
+  width: 200px;
+  height: 200px;
+}
+body section article {
+  position: relative;
+  margin: 0;
+  padding: 50px 10px;
+}
+body section article figure {
+  margin: 0px;
+}
+body section article figure figcaption {
+  font-size: 2em;
+  line-height: 2.5em;
+}
+body section article figure ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body section article figure ul:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+body section article figure ul li {
+  float: left;
+  overflow: hidden;
+  padding: 10px;
+  width: 20%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body section article figure ul li img {
+  width: 100%;
+}
+body footer {
+  text-align: center;
+  font-size: 0.9em;
+  line-height: 3em;
+}

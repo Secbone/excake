@@ -1,0 +1,31 @@
+
+doctype html
+html
+	head
+		meta(name='viewport', content='width=device-width, initial-scale=1.0', charset='utf-8')
+		link(rel='stylesheet', href='style/css/style.css')
+	body
+		nav
+		section
+			header
+				img(src='images/logo.jpg')
+			article
+				figure
+					figcaption Popular
+					ul
+						- 	for(var i=0; i<10; i++)
+							li
+								img(src='images/logo.jpg')
+
+				figure
+					figcaption Weibo
+					#weibo 
+						iframe(
+							width="100%",
+							height="450",
+							class="share_self",
+							frameborder="0",
+							scrolling="no",
+							src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=450&fansRow=1&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=0&uid=5228069238&verifier=006ff023&dpc=1"
+						)
+		footer 2014 excake

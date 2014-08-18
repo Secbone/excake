@@ -1,0 +1,78 @@
+$_prefix: normal;
+@mixin CSS3($property, $value){
+	-webkit-#{$property}: $value;
+	-moz-#{$property}: $value;
+	-ms-#{$property}: $value;
+	-o-#{$property}: $value;
+	#{$property}: $value;
+}
+@mixin fixclear(){
+	&:after{
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+@mixin linear-gradient($fromColor, $toColor) {
+	background-color: $toColor; /* Fallback Color */
+	background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, $fromColor, $toColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image:    -moz-linear-gradient(top, $fromColor, $toColor); /* FF3.6 */
+	background-image:     -ms-linear-gradient(top, $fromColor, $toColor); /* IE10 */
+	background-image:      -o-linear-gradient(top, $fromColor, $toColor); /* Opera 11.10+ */
+	background-image:         linear-gradient(top, $fromColor, $toColor);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}
+@mixin frameproperty($property, $value){
+	@if $_prefix == normal {
+		#{$property}: $value;
+	}@else{
+		-#{$_prefix}-#{$property}: $value;
+	}
+}
+@mixin transition($property: all, $duration: 0.2s, $type: linear, $delay: 0s){
+	@include CSS3(transition, $property $duration $type $delay);
+}
+@mixin animation($name, $duration: 0.2s, $timing: linear, $delay: 0s, $count: infinite, $direction: normal, $state: running){
+	@include CSS3(animation-name, $name);
+	@include CSS3(animation-duration, $duration);
+	@include CSS3(animation-timing-function, $timing);
+	@include CSS3(animation-delay, $delay);
+	@include CSS3(animation-iteration-count, $count);
+	@include CSS3(animation-direction, $direction);
+	@include CSS3(animation-play-state, $state);
+}
+@mixin keyframes($name, $content: null){
+	@-webkit-keyframes $name{
+		$_prefix: webkit;
+		@content;
+		$_prefix: normal;
+	}
+	@-moz-keyframes $name{
+		$_prefix: moz;
+		@content;
+		$_prefix: normal;
+	}
+	@-ms-keyframes $name{
+		$_prefix: ms;
+		@content;
+		$_prefix: normal;
+	}
+	@-o-keyframes $name{
+		$_prefix: o;
+		@content;
+		$_prefix: normal;
+	}
+	@keyframes $name{
+		$_prefix: normal;
+		@content;
+		$_prefix: normal;
+	}
+}
+@mixin fullscreen($position: absolute){
+	position: $position;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
