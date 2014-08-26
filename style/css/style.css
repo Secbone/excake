@@ -3,8 +3,49 @@ html, body {
   padding: 0;
 }
 
-body {
-  background-color: #a4ffa5;
+body .hamburger:before, body .hamburger:after,
+body .hamburger span {
+  content: '';
+  position: absolute;
+  display: block;
+  left: 0;
+  height: 10px;
+  width: 50px;
+  background-color: black;
+  -webkit-transition: top 0.2s linear 0s, -webkit-transform 0.2s linear 0.2s;
+  -moz-transition: top 0.2s linear 0, -moz-transform 0.2s linear 0.2s;
+  transition: top 0.2s linear 0, transform 0.2s linear 0.2s;
+}
+body .hamburger span {
+  top: 20px;
+}
+body .hamburger:before {
+  top: 0;
+}
+body .hamburger:after {
+  top: 40px;
+}
+body .hamburger.open:before, body .hamburger.open:after {
+  top: 20px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+body .hamburger.open span {
+  top: 20px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+body .hamburger.open:before, body .hamburger.open:after,
+body .hamburger.open span {
+  -webkit-transition: top 0.2s linear 0.2s, -webkit-transform 0.2s linear 0s;
+  -moz-transition: top 0.2s linear 0.2s, -moz-transform 0.2s linear 0s;
+  transition: top 0.2s linear 0.2s, transform 0.2s linear 0s;
 }
 body section {
   position: relative;
@@ -52,9 +93,11 @@ body section article figure ul:after {
 }
 body section article figure ul li {
   float: left;
+  position: relative;
   overflow: hidden;
   padding: 10px;
   width: 20%;
+  height: 300px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -62,6 +105,8 @@ body section article figure ul li {
   box-sizing: border-box;
 }
 body section article figure ul li img {
+  position: absolute;
+  margin: 0 auto;
   width: 100%;
 }
 body footer {

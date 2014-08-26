@@ -4,8 +4,58 @@ html,body{
 	padding: 0;
 }
 body{
-	background-color: #a4ffa5;
+	//background-color: #a4ffa5;
 	//overflow-x: hidden;
+
+	.hamburger{
+		&:before,
+		&:after,
+		span{
+			content: '';
+			position: absolute;
+			display: block;
+			left: 0;
+			height: 10px;
+			width: 50px;
+			background-color: black;
+			-webkit-transition: top 0.2s linear 0s,
+						-webkit-transform 0.2s linear 0.2s;
+			-moz-transition: top 0.2s linear 0,
+						-moz-transform 0.2s linear 0.2s;
+			transition: top 0.2s linear 0,
+						transform 0.2s linear 0.2s;
+		}
+		span{
+			top: 20px;
+		}
+		&:before{
+			top: 0;
+		}
+		&:after{
+			top: 40px;
+		}
+		&.open{
+			&:before,
+			&:after{
+				top: 20px;
+				@include CSS3(transform, rotate(45deg));
+			}
+			span{
+				top:20px;
+				@include CSS3(transform, rotate(-45deg));
+			}
+			&:before,
+			&:after,
+			span{
+				-webkit-transition: top 0.2s linear 0.2s,
+						-webkit-transform 0.2s linear 0s;
+				-moz-transition: top 0.2s linear 0.2s,
+							-moz-transform 0.2s linear 0s;
+				transition: top 0.2s linear 0.2s,
+							transform 0.2s linear 0s;
+			}
+		}
+	}
 
 	section{
 		position: relative;
@@ -52,12 +102,16 @@ body{
 
 					li{
 						float: left;
+						position: relative;
 						overflow: hidden;
 						padding: 10px;
 						width: 20%;
+						height: 300px;
 						@include CSS3(box-sizing, border-box);
 
 						img{
+							position: absolute;
+							margin: 0 auto;
 							width: 100%;
 						}
 					}

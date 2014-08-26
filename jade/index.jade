@@ -1,31 +1,52 @@
+//- var cakes = [{ name: '【红丝绒蛋糕】', pic: 'red-velvet', price: '88.00'},{ name: '【黑森林蛋糕】', pic: 'black-forest', price: '88.00'},{ name: '【棉花糖杯子蛋糕】', pic: 'cotton-candy-cup', price: '68.00'}]
 
 doctype html
 html
 	head
-		meta(name='viewport', content='width=device-width, initial-scale=1.0', charset='utf-8')
-		link(rel='stylesheet', href='style/css/style.css')
+		meta(name='viewport', content='width=device-width, maximum-scale=1, user-scalable=no, initial-scale=1.0', charset='utf-8')
+		meta(name='mobile-web-app-capable', content='yes')
+		meta(name='apple-mobile-web-app-capable', centent='yes')
+		meta(name='apple-mobile-web-app-status-bar-style', content='black')
+		link(rel='stylesheet', type='text/css', href='http://code.famo.us/famous/0.2.0/famous.css')
+		link(rel='stylesheet', type='text/css', href='style/css/style.css')
 	body
-		nav
-		section
-			header
-				img(src='images/logo.jpg')
-			article
-				figure
-					figcaption Popular
-					ul
-						- 	for(var i=0; i<10; i++)
-							li
-								img(src='images/logo.jpg')
+		//-
+			nav
+			section
+				header
+					img(src='images/logo.jpg')
+				article
+					figure
+						figcaption Popular
+						ul
+							li(way-repeat="cakes")
+								img(way-data="pic" way-default='images/logo.jpg')
+								span(way-data="name")
 
-				figure
-					figcaption Weibo
-					#weibo 
-						iframe(
-							width="100%",
-							height="450",
-							class="share_self",
-							frameborder="0",
-							scrolling="no",
-							src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=450&fansRow=1&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=0&uid=5228069238&verifier=006ff023&dpc=1"
-						)
-		footer 2014 excake
+					figure
+						figcaption Weibo
+						#weibo 
+							iframe(
+								width="100%",
+								height="450",
+								class="share_self",
+								frameborder="0",
+								scrolling="no",
+								src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=450&fansRow=1&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=0&uid=5228069238&verifier=006ff023&dpc=1"
+							)
+			footer 2014 excake
+			script(type='text/javascript', src='script/js/way.js')
+			script(type='text/javascript', src='script/js/cakes.js')
+		script(type='text/javascript', src='http://code.famo.us/lib/functionPrototypeBind.js')
+		script(type='text/javascript', src='http://code.famo.us/lib/classList.js')
+		script(type='text/javascript', src='http://code.famo.us/lib/requestAnimationFrame.js')
+
+		script(type='text/javascript', src='script/js/libs/underscore.js')
+
+		script(type='text/javascript', src='http://code.famo.us/lib/require.js')
+
+		script(type='text/javascript', src='http://code.famo.us/famous/0.2.0/famous.min.js')
+
+		script(type='text/javascript', src='script/js/config.js')
+		script(type='text/javascript').
+			require(['main']);
