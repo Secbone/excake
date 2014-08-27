@@ -21,9 +21,9 @@ define (require, exports, module)->
 
 	class AppView extends View
 		defaults :
-			openPosition: 276
-			posThreshold: 138
-			velThreshold: 0.75
+			openPosition: 200
+			posThreshold: 100
+			velThreshold: 0.5
 			transition:
 				duration: 300
 				curve: Easing.outBack
