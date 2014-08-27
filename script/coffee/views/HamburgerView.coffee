@@ -7,11 +7,11 @@ define (require, exports, module)->
 
 	class HamburgerView extends View
 		defaults: 
-			width: 50
-			height: 50
-			lineSize: [50, 10]
+			width: 30
+			height: 30
+			lineSize: [30, 7]
 			lineStyle: 
-				backgroundColor: 'black'
+				backgroundColor: 'white'
 			transition:
 				duration: 200
 				curve: 'linear'

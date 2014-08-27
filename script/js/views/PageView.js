@@ -3,7 +3,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require, exports, module) {
-    var FastClick, HamburgerView, HeaderFooter, PageView, StateModifier, Surface, Transform, View;
+    var FastClick, HamburgerView, HeaderFooter, LogoView, PageView, StateModifier, Surface, Transform, View;
     View = require('famous/core/View');
     Surface = require('famous/core/Surface');
     Transform = require('famous/core/Transform');
@@ -11,6 +11,7 @@
     HeaderFooter = require('famous/views/HeaderFooterLayout');
     FastClick = require('famous/inputs/FastClick');
     HamburgerView = require('views/HamburgerView');
+    LogoView = require('views/LogoView');
     PageView = (function(_super) {
       __extends(PageView, _super);
 
@@ -43,7 +44,7 @@
         backgroundSurface = new Surface({
           size: [void 0, 100],
           properties: {
-            backgroundColor: 'white'
+            backgroundColor: '#a4ffa5'
           }
         });
         backgroundModifier = new StateModifier({
@@ -51,20 +52,21 @@
         });
         this.hamburgerView = new HamburgerView();
         hamburgerModifier = new StateModifier({
-          size: [50, 50],
+          size: [30, 30],
           align: [0, 0.5],
           origin: [-0.5, 0.5]
         });
+        this.logoView = new LogoView();
         this.layout.header.add(backgroundModifier).add(backgroundSurface);
-        return this.layout.header.add(hamburgerModifier).add(this.hamburgerView);
+        this.layout.header.add(hamburgerModifier).add(this.hamburgerView);
+        return this.layout.header.add(this.logoView);
       };
 
       PageView.prototype._createBody = function() {
         this.bodySurface = new Surface({
           size: [void 0, void 0],
-          content: 'this is body',
           properties: {
-            backgroundColor: '#a4ffa5'
+            backgroundColor: 'white'
           }
         });
         return this.layout.content.add(this.bodySurface);

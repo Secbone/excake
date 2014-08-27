@@ -7,6 +7,7 @@ define (require, exports, module)->
 	FastClick = require 'famous/inputs/FastClick'
 
 	HamburgerView = require 'views/HamburgerView'
+	LogoView = require 'views/LogoView'
 
 	class PageView extends View
 		defaults: 
@@ -29,23 +30,24 @@ define (require, exports, module)->
 			backgroundSurface = new Surface 
 				size: [undefined,100]
 				properties: 
-					backgroundColor: 'white'
+					backgroundColor: '#a4ffa5'
 			backgroundModifier = new StateModifier 
 				transform: Transform.behind
 			@hamburgerView = new HamburgerView()
 			hamburgerModifier = new StateModifier 
-				size: [50, 50]
+				size: [30, 30]
 				align: [0, 0.5]
 				origin: [-0.5, 0.5]
+			@logoView = new LogoView()
 			@layout.header.add(backgroundModifier).add(backgroundSurface)
 			@layout.header.add(hamburgerModifier).add(@hamburgerView)
+			@layout.header.add(@logoView)
 
 		_createBody: ->
 			@bodySurface = new Surface 
 				size: [undefined, undefined]
-				content: 'this is body'
 				properties: 
-					backgroundColor: '#a4ffa5'
+					backgroundColor: 'white'
 			@layout.content.add(@bodySurface)
 		_setListeners: ->
 			@hamburgerView._eventInput.on 'click', =>
