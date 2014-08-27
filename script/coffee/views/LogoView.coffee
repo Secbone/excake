@@ -4,11 +4,15 @@ define (require, exports, module)->
 	Transform = require 'famous/core/Transform'
 	StateModifier = require 'famous/modifiers/StateModifier'
 	ImageSurface = require 'famous/surfaces/ImageSurface'
+	Easing = require 'famous/transitions/Easing'
 	Timer = require 'famous/utilities/Timer'
 
 	class Logoview extends View
 		defaults:
 			size: [100, 100]
+			transition: 
+				duration: 500
+				curve: Easing.outBack
 		constructor: ->
 			View.apply @, arguments
 			@options = _.extend(@defaults, @options)
@@ -25,4 +29,6 @@ define (require, exports, module)->
 			logoModifier = new StateModifier 
 				align: [0.5, 1]
 				origin: [0.5, 0.5]
+				transform: Transform.scale(0, 0, 1)
 			@add(logoModifier).add(logoSurface)
+			logoModifier.setTransform Transform.scale(1, 1, 1), @options.transition
