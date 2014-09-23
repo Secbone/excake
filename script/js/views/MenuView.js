@@ -3,18 +3,19 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require, exports, module) {
-    var MenuView, StateModifier, StripView, Surface, Timer, Transform, View;
+    var MenuView, StateModifier, StripData, StripView, Surface, Timer, Transform, View;
     View = require('famous/core/View');
     Surface = require('famous/core/Surface');
     Transform = require('famous/core/Transform');
     StateModifier = require('famous/modifiers/StateModifier');
     Timer = require('famous/utilities/Timer');
     StripView = require('views/StripView');
+    StripData = require('data/StripData');
     MenuView = (function(_super) {
       __extends(MenuView, _super);
 
       MenuView.prototype.defaults = {
-        stripData: {},
+        stripData: StripData.getData(),
         angle: -0.2,
         stripWidth: 320,
         stripHeight: 54,

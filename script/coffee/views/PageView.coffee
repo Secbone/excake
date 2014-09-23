@@ -8,6 +8,7 @@ define (require, exports, module)->
 
 	HamburgerView = require 'views/HamburgerView'
 	LogoView = require 'views/LogoView'
+	ContainerView = require 'views/ContainerView'
 
 	class PageView extends View
 		defaults: 
@@ -28,9 +29,9 @@ define (require, exports, module)->
 			@add(layoutModifier).add(@layout)
 		_createHeader: ->
 			backgroundSurface = new Surface 
-				size: [undefined,100]
+				size: [undefined,@options.headerSize]
 				properties: 
-					backgroundColor: '#a4ffa5'
+					backgroundColor: "hsl("+Math.random()*360+", 100%, 50%)"
 			backgroundModifier = new StateModifier 
 				transform: Transform.behind
 			@hamburgerView = new HamburgerView()
@@ -48,7 +49,9 @@ define (require, exports, module)->
 				size: [undefined, undefined]
 				properties: 
 					backgroundColor: 'white'
+			@containerView = new ContainerView()
 			@layout.content.add(@bodySurface)
+			@layout.content.add(@containerView)
 		_setListeners: ->
 			@hamburgerView._eventInput.on 'click', =>
 				@_eventOutput.emit 'menuToggle'

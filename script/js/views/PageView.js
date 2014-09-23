@@ -3,7 +3,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require, exports, module) {
-    var FastClick, HamburgerView, HeaderFooter, LogoView, PageView, StateModifier, Surface, Transform, View;
+    var ContainerView, FastClick, HamburgerView, HeaderFooter, LogoView, PageView, StateModifier, Surface, Transform, View;
     View = require('famous/core/View');
     Surface = require('famous/core/Surface');
     Transform = require('famous/core/Transform');
@@ -12,6 +12,7 @@
     FastClick = require('famous/inputs/FastClick');
     HamburgerView = require('views/HamburgerView');
     LogoView = require('views/LogoView');
+    ContainerView = require('views/ContainerView');
     PageView = (function(_super) {
       __extends(PageView, _super);
 
@@ -42,9 +43,9 @@
       PageView.prototype._createHeader = function() {
         var backgroundModifier, backgroundSurface, hamburgerModifier;
         backgroundSurface = new Surface({
-          size: [void 0, 100],
+          size: [void 0, this.options.headerSize],
           properties: {
-            backgroundColor: '#a4ffa5'
+            backgroundColor: "hsl(" + Math.random() * 360 + ", 100%, 50%)"
           }
         });
         backgroundModifier = new StateModifier({
@@ -69,7 +70,9 @@
             backgroundColor: 'white'
           }
         });
-        return this.layout.content.add(this.bodySurface);
+        this.containerView = new ContainerView();
+        this.layout.content.add(this.bodySurface);
+        return this.layout.content.add(this.containerView);
       };
 
       PageView.prototype._setListeners = function() {

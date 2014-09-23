@@ -34,6 +34,7 @@
           size: this.options.size,
           content: 'images/logo.jpg',
           properties: {
+            overflow: 'hidden',
             border: '5px solid white',
             zIndex: 3,
             borderRadius: '50%'

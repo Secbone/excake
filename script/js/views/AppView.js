@@ -3,7 +3,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require, exports, module) {
-    var AppView, Easing, GenericSync, MenuView, Modifier, MouseSync, PageView, StateModifier, StripData, Surface, TouchSync, Transform, Transitionable, View;
+    var AppView, Easing, GenericSync, MenuView, Modifier, MouseSync, PageView, StateModifier, Surface, TouchSync, Transform, Transitionable, View;
     View = require('famous/core/View');
     Surface = require('famous/core/Surface');
     Transform = require('famous/core/Transform');
@@ -12,7 +12,6 @@
     Easing = require('famous/transitions/Easing');
     PageView = require('views/PageView');
     MenuView = require('views/MenuView');
-    StripData = require('data/StripData');
     GenericSync = require('famous/inputs/GenericSync');
     MouseSync = require('famous/inputs/MouseSync');
     TouchSync = require('famous/inputs/TouchSync');
@@ -58,9 +57,7 @@
       };
 
       AppView.prototype._createMenuView = function() {
-        this.menuView = new MenuView({
-          stripData: StripData
-        });
+        this.menuView = new MenuView();
         this.menuModifier = new StateModifier({
           transform: Transform.behind
         });

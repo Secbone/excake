@@ -8,7 +8,6 @@ define (require, exports, module)->
 
 	PageView = require 'views/PageView'
 	MenuView = require 'views/MenuView'
-	StripData = require 'data/StripData'
 
 	GenericSync = require 'famous/inputs/GenericSync'
 	MouseSync = require 'famous/inputs/MouseSync'
@@ -47,8 +46,7 @@ define (require, exports, module)->
 
 			@add(@pageModifier).add(@pageView)
 		_createMenuView: ->
-			@menuView = new MenuView
-				stripData: StripData
+			@menuView = new MenuView()
 			@menuModifier = new StateModifier 
 				transform: Transform.behind
 			@add(@menuModifier).add(@menuView)

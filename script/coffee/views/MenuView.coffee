@@ -7,9 +7,11 @@ define (require, exports, module)->
 
 	StripView = require 'views/StripView'
 
+	StripData = require 'data/StripData'
+
 	class MenuView extends View
 		defaults:
-			stripData: {}
+			stripData: StripData.getData()
 			angle: -0.2
 			stripWidth: 320
 			stripHeight: 54
