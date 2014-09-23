@@ -28,10 +28,11 @@ define (require, exports, module)->
 				transform: Transform.translate(0,0,0.1)
 			@add(layoutModifier).add(@layout)
 		_createHeader: ->
+			@color = Math.random()*360
 			backgroundSurface = new Surface 
 				size: [undefined,@options.headerSize]
 				properties: 
-					backgroundColor: "hsl("+Math.random()*360+", 100%, 50%)"
+					backgroundColor: "hsl("+@color+", 100%, 50%)"
 			backgroundModifier = new StateModifier 
 				transform: Transform.behind
 			@hamburgerView = new HamburgerView()
@@ -39,7 +40,8 @@ define (require, exports, module)->
 				size: [30, 30]
 				align: [0, 0.5]
 				origin: [-0.5, 0.5]
-			@logoView = new LogoView()
+			@logoView = new LogoView
+				color: @color
 			@layout.header.add(backgroundModifier).add(backgroundSurface)
 			@layout.header.add(hamburgerModifier).add(@hamburgerView)
 			@layout.header.add(@logoView)

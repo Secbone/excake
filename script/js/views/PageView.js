@@ -42,10 +42,11 @@
 
       PageView.prototype._createHeader = function() {
         var backgroundModifier, backgroundSurface, hamburgerModifier;
+        this.color = Math.random() * 360;
         backgroundSurface = new Surface({
           size: [void 0, this.options.headerSize],
           properties: {
-            backgroundColor: "hsl(" + Math.random() * 360 + ", 100%, 50%)"
+            backgroundColor: "hsl(" + this.color + ", 100%, 50%)"
           }
         });
         backgroundModifier = new StateModifier({
@@ -57,7 +58,9 @@
           align: [0, 0.5],
           origin: [-0.5, 0.5]
         });
-        this.logoView = new LogoView();
+        this.logoView = new LogoView({
+          color: this.color
+        });
         this.layout.header.add(backgroundModifier).add(backgroundSurface);
         this.layout.header.add(hamburgerModifier).add(this.hamburgerView);
         return this.layout.header.add(this.logoView);
