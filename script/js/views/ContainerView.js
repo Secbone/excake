@@ -21,7 +21,10 @@
 
       ContainerView.prototype.defaults = {
         height: void 0,
-        width: void 0
+        width: void 0,
+        imgSize: [300, 300],
+        imgSpace: 10,
+        imgMinSpace: 10
       };
 
       function ContainerView() {
@@ -31,7 +34,10 @@
       }
 
       ContainerView.prototype._createContent = function() {
-        var count, row, rowView, views, _i;
+        var count, row, rowCount, rowLength, rowView, views, _i;
+        rowLength = this.getRowLength();
+        console.log(rowLength);
+        rowCount = CakesData.getRows(rowLength);
         this.scrollView = new ScrollViewExtension({
           margin: 1000000
         });
@@ -39,14 +45,14 @@
         this.scrollView.sequenceFrom(views);
         this.rowViews = [];
         count = 0;
-        for (row = _i = 1; _i <= 3; row = ++_i) {
-          console.log(row);
+        for (row = _i = 1; 1 <= rowCount ? _i <= rowCount : _i >= rowCount; row = 1 <= rowCount ? ++_i : --_i) {
           rowView = new RowView({
-            size: [200, 200],
+            size: this.options.imgSize,
             scrollView: this.scrollView,
             count: count,
+            space: this.options.imgSpace,
             row: row,
-            images: CakesData.getRowData(row, 3)
+            images: CakesData.getRowData(row, rowLength)
           });
           this.rowViews.push(rowView);
           views.push(rowView.sequentialLayout);
@@ -65,6 +71,19 @@
 
       ContainerView.prototype.render = function() {
         return this._node.render.apply(this._node, arguments);
+      };
+
+      ContainerView.prototype.getRowLength = function() {
+        var i, width;
+        width = window.innerWidth;
+        console.log(width);
+        i = 0;
+        while (!(this.options.imgSize[0] * i + this.options.imgMinSpace * (i + 1) >= width)) {
+          i++;
+        }
+        i = i - 1 || 1;
+        this.options.imgSpace = (width - this.options.imgSize[0] * i) / (i + 1);
+        return i;
       };
 
       return ContainerView;

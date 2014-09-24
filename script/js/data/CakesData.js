@@ -43,6 +43,9 @@
       getRowData: function(row, length) {
         return this._data.slice(length * (row - 1), length * row);
       },
+      getRows: function(length) {
+        return Math.ceil(this._data.length / length);
+      },
       getLength: function() {
         return this._data.length;
       },

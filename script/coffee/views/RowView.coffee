@@ -24,7 +24,6 @@ define (require, exports, module)->
 
 			@modifiers = []
 
-			console.log @options.row
 			for item, i in @options.images
 				surface = new Surface 
 					size: @options.size

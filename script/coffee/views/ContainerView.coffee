@@ -19,12 +19,18 @@ define (require, exports, module)->
 		defaults:
 			height: undefined
 			width: undefined
+			imgSize: [300, 300]
+			imgSpace: 10
+			imgMinSpace: 10
 		constructor: ->
 			View.apply @, arguments
 			@options = _.extend(@defaults, @options)
 
 			@_createContent()
 		_createContent: ->
+			rowLength = @getRowLength()
+			console.log rowLength
+			rowCount = CakesData.getRows rowLength
 			@scrollView = new ScrollViewExtension 
 				margin: 1000000
 			#@scrollView.on 'start', =>
@@ -34,14 +40,14 @@ define (require, exports, module)->
 
 			@rowViews = []
 			count = 0
-			for row in [1..3]
-				console.log row
+			for row in [1..rowCount]
 				rowView = new RowView
-					size: [200, 200]
+					size: @options.imgSize
 					scrollView: @scrollView
 					count: count
+					space: @options.imgSpace
 					row: row
-					images: CakesData.getRowData(row, 3)
+					images: CakesData.getRowData(row, rowLength)
 				@rowViews.push rowView
 				views.push rowView.sequentialLayout
 				count += 3
@@ -59,5 +65,14 @@ define (require, exports, module)->
 			@_add @container
 		render: ->
 			@_node.render.apply(@_node, arguments)
+		getRowLength: ->
+			width = window.innerWidth
+			console.log width
+			i = 0
+			i++ until @options.imgSize[0]*i + @options.imgMinSpace*(i+1) >= width
+			i= i-1 || 1
+
+			@options.imgSpace = (width-@options.imgSize[0]*i)/(i+1)
+			i
 
 	module.exports = ContainerView

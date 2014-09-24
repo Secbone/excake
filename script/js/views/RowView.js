@@ -33,7 +33,6 @@
           direction: 0
         });
         this.modifiers = [];
-        console.log(this.options.row);
         _ref = this.options.images;
         for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
           item = _ref[i];

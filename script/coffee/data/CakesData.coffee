@@ -46,6 +46,8 @@ define (require, exports, module)->
 			@_data
 		getRowData: (row, length)->
 			@_data.slice length*(row-1), length*row
+		getRows: (length)->
+			Math.ceil(@_data.length/length)
 		getLength: ->
 			@_data.length
 		getItem: (index)->
