@@ -34,14 +34,15 @@ define (require, exports, module)->
 
 			@rowViews = []
 			count = 0
-			for row in [0...13]
+			for row in [1..3]
+				console.log row
 				rowView = new RowView
-					size: [0, 100]
+					size: [200, 200]
 					scrollView: @scrollView
 					count: count
-					img: CakesData.getRowData(row)
+					row: row
+					images: CakesData.getRowData(row, 3)
 				@rowViews.push rowView
-				console.log rowView.sequentialLayout
 				views.push rowView.sequentialLayout
 				count += 3
 			@container = new ContainerSurface 
@@ -52,9 +53,9 @@ define (require, exports, module)->
 
 			@container.add @scrollView
 
-			testView = new RowView()
+			#testView = new RowView()
 
-			@container.add testView
+			#@container.add testView
 			@_add @container
 		render: ->
 			@_node.render.apply(@_node, arguments)

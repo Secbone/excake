@@ -36,7 +36,7 @@
         var borderModifier, borderSurface, logoModifier, logoSurface;
         logoSurface = new Surface({
           size: [this.options.width + 10, this.options.height + 10],
-          content: '<img width=' + this.options.width + ' height=' + this.options.height + 'px src="images/logo.jpg" />',
+          content: '<img style="overflow:hidden" width=' + this.options.width + ' height=' + this.options.height + 'px src="images/logo.jpg" />',
           properties: {
             overflow: 'hidden',
             border: '5px solid white',

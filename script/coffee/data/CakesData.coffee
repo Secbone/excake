@@ -44,8 +44,8 @@ define (require, exports, module)->
 		]
 		getData: ->
 			@_data
-		getRowData: (row)->
-			return
+		getRowData: (row, length)->
+			@_data.slice length*(row-1), length*row
 		getLength: ->
 			@_data.length
 		getItem: (index)->

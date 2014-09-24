@@ -27,7 +27,7 @@ define (require, exports, module)->
 		_createLogo: ->
 			logoSurface = new Surface
 				size: [@options.width+10, @options.height+10]
-				content: '<img width='+@options.width+' height='+@options.height+'px src="images/logo.jpg" />'
+				content: '<img style="overflow:hidden" width='+@options.width+' height='+@options.height+'px src="images/logo.jpg" />'
 				properties: 
 					overflow: 'hidden'
 					border: '5px solid white'

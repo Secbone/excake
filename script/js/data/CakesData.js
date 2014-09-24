@@ -40,7 +40,9 @@
       getData: function() {
         return this._data;
       },
-      getRowData: function(row) {},
+      getRowData: function(row, length) {
+        return this._data.slice(length * (row - 1), length * row);
+      },
       getLength: function() {
         return this._data.length;
       },

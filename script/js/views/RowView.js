@@ -13,7 +13,9 @@
       __extends(RowView, _super);
 
       RowView.prototype.defaults = {
-        size: [void 0, 100]
+        size: [void 0, 100],
+        space: 10,
+        images: []
       };
 
       function RowView() {
@@ -24,20 +26,45 @@
       }
 
       RowView.prototype._createContent = function() {
-        var contentSurface, view, views;
+        var Xoffset, Yoffset, i, item, modifier, surface, view, views, _i, _len, _ref;
         views = [];
         this.sequentialLayout = new SequentialLayout({
+          itemSpacing: 0,
           direction: 0
         });
-        contentSurface = new Surface({
-          size: this.options.size,
-          properties: {
-            backgroundColor: "hsl(" + Math.random() * 360 + ", 100%, 50%)"
-          }
-        });
-        view = new View();
-        view.add(contentSurface);
-        views.push(view);
+        this.modifiers = [];
+        console.log(this.options.row);
+        _ref = this.options.images;
+        for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+          item = _ref[i];
+          surface = new Surface({
+            size: this.options.size,
+            content: "<img width=" + this.options.size[0] + "px height=" + this.options.size[1] + "px src=" + item.pic + " />"
+          });
+          Xoffset = this.options.space * (i + 1);
+          Yoffset = this.options.space * this.options.row;
+          modifier = new Modifier({
+            transform: Transform.translate(Xoffset, Yoffset, 0),
+            opacity: 1
+          });
+          modifier.offset = Xoffset;
+          this.modifiers.push(modifier);
+          view = new View({
+            size: this.options.size
+          });
+          view._add(modifier).add(surface);
+          views.push(view);
+        }
+
+        /*
+        			contentSurface = new Surface
+        				size: @options.size
+        				properties: 
+        					backgroundColor: "hsl("+Math.random()*360+", 100%, 50%)"
+        			view = new View()
+        			view.add contentSurface
+        			views.push view
+         */
         return this.sequentialLayout.sequenceFrom(views);
       };
 

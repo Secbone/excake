@@ -31,7 +31,7 @@
       }
 
       ContainerView.prototype._createContent = function() {
-        var count, row, rowView, testView, views, _i;
+        var count, row, rowView, views, _i;
         this.scrollView = new ScrollViewExtension({
           margin: 1000000
         });
@@ -39,15 +39,16 @@
         this.scrollView.sequenceFrom(views);
         this.rowViews = [];
         count = 0;
-        for (row = _i = 0; _i < 13; row = ++_i) {
+        for (row = _i = 1; _i <= 3; row = ++_i) {
+          console.log(row);
           rowView = new RowView({
-            size: [0, 100],
+            size: [200, 200],
             scrollView: this.scrollView,
             count: count,
-            img: CakesData.getRowData(row)
+            row: row,
+            images: CakesData.getRowData(row, 3)
           });
           this.rowViews.push(rowView);
-          console.log(rowView.sequentialLayout);
           views.push(rowView.sequentialLayout);
           count += 3;
         }
@@ -59,8 +60,6 @@
           }
         });
         this.container.add(this.scrollView);
-        testView = new RowView();
-        this.container.add(testView);
         return this._add(this.container);
       };
 
