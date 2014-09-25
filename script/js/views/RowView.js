@@ -41,7 +41,7 @@
             content: "<img width=" + this.options.size[0] + "px height=" + this.options.size[1] + "px src=" + item.pic + " />"
           });
           Xoffset = this.options.space * (i + 1);
-          Yoffset = this.options.space * this.options.row;
+          Yoffset = this.options.space * this.options.row + 50;
           modifier = new Modifier({
             transform: Transform.translate(Xoffset, Yoffset, 0),
             opacity: 1
@@ -52,6 +52,7 @@
             size: this.options.size
           });
           view._add(modifier).add(surface);
+          surface.pipe(this.options.scrollView);
           views.push(view);
         }
 

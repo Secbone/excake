@@ -17,7 +17,7 @@
       __extends(PageView, _super);
 
       PageView.prototype.defaults = {
-        headerSize: 100
+        headerSize: 60
       };
 
       function PageView() {

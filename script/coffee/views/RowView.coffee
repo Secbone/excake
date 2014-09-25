@@ -29,7 +29,7 @@ define (require, exports, module)->
 					size: @options.size
 					content: "<img width=#{@options.size[0]}px height=#{@options.size[1]}px src=#{item.pic} />"
 				Xoffset = @options.space*(i+1)
-				Yoffset = @options.space*(@options.row)
+				Yoffset = @options.space*(@options.row) + 50
 				modifier = new Modifier 
 					transform: Transform.translate Xoffset, Yoffset, 0
 					opacity: 1
@@ -38,6 +38,7 @@ define (require, exports, module)->
 				view = new View
 					size: @options.size
 				view._add(modifier).add(surface)
+				surface.pipe @options.scrollView
 				views.push view
 			###
 			contentSurface = new Surface

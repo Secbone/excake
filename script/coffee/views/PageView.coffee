@@ -12,7 +12,7 @@ define (require, exports, module)->
 
 	class PageView extends View
 		defaults: 
-			headerSize: 100
+			headerSize: 60
 		constructor: ->
 			View.apply @, arguments
 			@options = _.extend(@defaults, @options)
