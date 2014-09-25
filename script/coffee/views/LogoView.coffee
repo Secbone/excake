@@ -48,4 +48,7 @@ define (require, exports, module)->
 				transform: Transform.scale(0, 0, 1)
 			@add(borderModifier).add(borderSurface)
 			@add(logoModifier).add(logoSurface)
-			logoModifier.setTransform Transform.scale(1, 1, 1), @options.transition
+			logoModifier.setTransform Transform.scale(1, 1, 1), @options.transition, =>
+				logoModifier.setAlign [0.5, 0.7], @options.transition
+				borderModifier.setAlign [0.5, 0.7], @options.transition
+

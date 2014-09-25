@@ -63,7 +63,12 @@
         });
         this.add(borderModifier).add(borderSurface);
         this.add(logoModifier).add(logoSurface);
-        return logoModifier.setTransform(Transform.scale(1, 1, 1), this.options.transition);
+        return logoModifier.setTransform(Transform.scale(1, 1, 1), this.options.transition, (function(_this) {
+          return function() {
+            logoModifier.setAlign([0.5, 0.7], _this.options.transition);
+            return borderModifier.setAlign([0.5, 0.7], _this.options.transition);
+          };
+        })(this));
       };
 
       return Logoview;
